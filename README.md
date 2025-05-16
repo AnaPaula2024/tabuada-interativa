@@ -1,5 +1,7 @@
 # 📌 Tabuada Interativa
 
+![Tabuada Funcionando](tabuada.png)
+
 Este projeto foi desenvolvido como exercício da disciplina **Programação Web (Senac)**.
 
 A proposta era criar uma página HTML com JavaScript que:
