@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabuada Interativa</title>
+    <style>
+      body {
+        display: flex;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .calculadora {
+        background-color: #fff;
+        border: 2px solid #ccc;
+        padding: 30px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
+      input[type="number"] {
+        width: 80%;
+        padding: 5px;
+        font-size: 1rem;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 0.9rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+      }
+
+      #resultado {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .grupo {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        color: #000;
+      }
+
+      .sucesso {
+        color: green;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculadora">
+      <h1>Tabuada do 0 ao 10</h1>
+      <label for="numero">Digite um número:</label>
+      <input type="number" id="numero" placeholder="Ex: 7" />
+      <button id="gerar">Calcular Tabuada</button>
+      <div id="resultado"></div>
+    </div>
+
+    <script>
+
+        function gerarCorDeFundoAleatoria() {
+            const letras = '0123456789ABCDEF';
+            let cor = '#';
+            for (let i = 0; i < 6; i++) {
+                cor += letras [Math.floor(Math.random() * 16)];
+            }
+
+            return cor;
+        }
+
+      function executarTabuada() {
+        const entrada = document.getElementById("numero");
+        const valor = Number(entrada.value);
+        const resultado = document.getElementById("resultado");
+
+        resultado.innerHTML = "";
+
+        if (entrada.value.trim() === "" || isNaN(valor)) {
+          resultado.innerHTML =
+            '<p style="color:red;">Por favor, digite um número para gerar a tabuada!</p>';
+            entrada.value = "";
+            entrada.focus();
+          return;
+        }
+
+        const grupo = document.createElement("div");
+        grupo.className = "grupo";
+        grupo.style.backgroundColor = gerarCorDeFundoAleatoria();
+
+        for (let i = 0; i <= 10; i++) {
+          const linha = document.createElement("p");
+          linha.textContent = `${valor} x ${i} = ${valor * i}`;
+          grupo.appendChild(linha);
+
+        }
+
+        resultado.appendChild(grupo);
+
+        const sucesso = document.createElement("p");
+        sucesso.textContent = "✅ Tabuada gerada com sucesso!";
+        sucesso.className = "sucesso";
+        resultado.appendChild(sucesso);
+
+        entrada.value = "";
+        entrada.focus();
+      }
+
+      document.getElementById("gerar").onclick = executarTabuada;
+      document
+        .getElementById("numero")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            executarTabuada();
+          }
+        });
+    </script>
+  </body>
+</html>
