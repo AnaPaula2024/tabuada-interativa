@@ -1,7 +1,7 @@
 <h1 align="center">📌 Tabuada Interativa</h1>
 
 <p align="center">
-  <img src="tabuada.png" alt="Tabuada funcionando" width="300">
+  <img src="https://raw.githubusercontent.com/AnaPaula2024/tabuada-interativa/main/tabuada.png" alt="Tabuada funcionando" width="300">
 </p>
 
 <div align="center">
